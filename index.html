@@ -92,15 +92,15 @@
                     <span class = "icon-bar"></span>
                     <span class = "icon-bar"></span>
                 </button>
-                <a class = "navbar-brand" href = "#"><img src = "img/w3newbie.png"></a>
+                <a class = "navbar-brand" href = "#"><img src = "img/logo.png" width="40px"></a>
             </div>
             <div class = "collapse navbar-collapse" id = "myNavbar">
                 <ul class = "nav navbar-nav navbar-right">
                     <li class = "active"><a href = "#">Home</a></li>
-                    <li><a href = "#">About Me</a></li>
-                    <li><a href = "#">Work Experience</a></li>
-                    <li><a href = "#">Projects</a></li>
-                    <li><a href = "#">Contact</a></li>
+                    <li><a href = "#about-me">About Me</a></li>
+                    <li><a href = "#work-experience">Work Experience</a></li>
+                    <li><a href = "#projects">Projects</a></li>
+                    <li><a href = "#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -114,18 +114,20 @@
         </ol>
         <div class = "carousel-inner" role = "listbox">
             <div class = "item active">
-                <img src = "img/mountains.png">
+                <img src = "img/pic.jpg">
                 <div class = "carousel-caption">
                     <h1>Michael Nasello</h1>
+                    <h5>Mechatronics Engineering Student</h5>
                     <br>
-                    <button type = "button" class = "btn btn-primary btn-lg">Contact Me</button>
+                    <a href = "https://drive.google.com/open?id=1oScBNeyEuKXIX5FqIq0hdXf17sW3vygC"
+                       target = "_blank"><button class = "btn btn-primary btn-lg">Resume</button></a>
                 </div>
             </div> <!--- End Active --->
             <div class = "item">
-                <img src = "img/snow.png">
+                <img src = "img/wateng.jpg">
             </div>
             <div class = "item">
-                <img src = "img/red.png">
+                <img src = "img/general-amherst.v3.jpg">
             </div>
         </div>
         <!--- Start Slider Controls --->
@@ -142,46 +144,28 @@
     <div class = "container-fluid"> <!--- Start Jumbotron --->
         <div class = "row jumbotron">
             <div class = "col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-                <p class = "lead">
-                    A web hosting service allows individuals and organizations to make their
-                    website accessible via the World Wide Web.
+                <p class = "lead" style = "text-align: center">
+                    Like my website? I used the Bootstrap framework to develop the responsive design. <br> Check out
+                    the source code in the Github repo...
                 </p>
             </div>
             <div class = "col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-                <a href = "#"><button class = "btn btn-secondary">Web Hosting</button></a>
+                <a href = "https://github.com/MichaelNasello?tab=repositories" target = "_blank"><button class = "btn btn-secondary">Github Repository</button></a>
             </div>
         </div>
     </div>
 
-    <div class = "container-fluid padding"> <!--- Welcome Section --->
+    <div class = "container-fluid padding" id = "about-me"> <!--- Welcome Section --->
         <div class = "row welcome text-center">
             <div class = "col-12">
-                <h1 class = "display-4">Built with ease.</h1>
+                <h1 class = "display-4">About Me</h1>
             </div>
             <hr>
             <div class = "col-12">
                 <p class = "lead">
-                    Welcome to my Bootstrap 4 website tutorial! Bootstrap is a free and open-source front-end
-                    library with HTML and CSS based designs
+                    Welcome to my website! On this page, you can find details about me, my work experience, and some of
+                    the projects I've completed / am working on.
                 </p>
-            </div>
-        </div>
-    </div>
-
-    <div class = "container text-center">
-        <h2>What We're Using</h2>
-        <div class = "row">
-            <div class = "col-sm-4">
-                <img src = "img/html5.png" id = "icon">
-                <h4>HTML5</h4>
-            </div>
-            <div class = "col-sm-4">
-                <img src = "img/bootstrap.png" id = "icon">
-                <h4>Bootstrap</h4>
-            </div>
-            <div class = "col-sm-4">
-                <img src = "img/css3.png" id = "icon">
-                <h4>CSS3</h4>
             </div>
         </div>
     </div>
@@ -189,40 +173,55 @@
     <div class = "container">
         <div class = "row">
             <div class = "col-md-6">
-                <h4>Here's the cool thing about Bootstrap...</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries, but also the leap into
-                    electronic typesetting, remaining essentially unchanged. It was popularised in
-                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                    and more recently with desktop publishing software like Aldus PageMaker including
-                    versions of Lorem Ipsum.
+                <h4>About myself...</h4>
+                <p style = "font-size: 18px">
+                    I am an individual with a passion for learning. To me, nothing
+                    is more exciting than struggling through a problem, previously
+                    unencountered, and finding that breakthrough and eventual
+                    solution. While studying Mechatronics Engineering at the
+                    University of Waterloo, I have been presented with countless
+                    opportunities to do so. Collaborations with classmates has led
+                    to my introduction to several awesome fields, including Web
+                    Development, Computer Vision, Machine Learning, etc. Outside
+                    of the classroom, I use my time to develop skills in these areas.
+                    Deep Learning is a field in which I have spent a significant amount
+                    of time. From watching video lectures, reading articles and
+                    self-teaching myself the mathematics involved in model training,
+                    I have learned how to create deep learning solutions. For my first
+                    co-op position, this was my responsibility; I trained 20+ models
+                    (including iterations), carried one solution to completion and the
+                    other to the demo-stage. I presented both solutions to the
+                    respective customer.
                 </p>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries, but also the leap into
-                    electronic typesetting, remaining essentially unchanged. It was popularised in
-                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                    and more recently with desktop publishing software like Aldus PageMaker including
-                    versions of Lorem Ipsum.</p>
+                <p style = "font-size: 18px">
+                    When I'm not in class nor working on a side project, I enjoy hitting
+                    the gym, going on runs, and playing several sports recreationally
+                    (golf, tennis, soccer).
+                </p>
             </div>
             <div class = "col-md-6">
-                <img src = "img/bootstrap2.jpg" class = "img-responsive">
+                <img src = "img/vista.jpeg" class = "img-responsive">
             </div>
         </div>
     </div>
 
-    <figure> <!--- Fixed Background --->
-        <div class = "fixed-wrap">
-            <div id = "fixed">
-
+    <div id = "myCarousel" class = "carousel slide" data-ride = "carousel">
+        <ol class = "carousel-indicators">
+            <li data-target = "#myCarousel" data-slide-to = "0" class = "active"></li>
+        </ol>
+        <div class = "carousel-inner" role = "listbox">
+            <div class = "item active">
+                <img src = "img/space-x-2.jpg" width = 100%>
+                <div class = "carousel-caption">
+                    <h2>"The people who are crazy enough to think that they can change the world, are the ones who do."</h2>
+                    <br>
+                    <h5><i>- Steve Jobs</i></h5>
+                </div>
             </div>
         </div>
-    </figure>
+    </div>
 
-    <div class = "container-fluid padding">
+    <div class = "container-fluid padding" id = "work-experience">
         <div class = "row welcome text-center">
             <div class = "col-12">
                 <h1 class = "display-4">Work Experience</h1>
@@ -231,125 +230,168 @@
         </div>
     </div>
 
-    <div class = "container-fluid padding"> <!--- Cards --->
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <h4>Machine Learning Developer / Data Scientist (Current Position)</h4>
+                <h5>National Research Council Canada <i> - Ottawa, ON</i></h5>
+                <p>
+                    I am currently working on a project that attempts to forecast sea-ice presence in several
+                    large Canadian bodies of water, including Baffin Bay, the Great Lakes, the Northwest Territories,
+                    and the Arctic. I am developing scripts for testing the peformance of a custom architecture that
+                    incorporates ConvLSTM's as an encoder and a custom RNN for a decoder.
+                    <br><br>
+                    The model takes as input
+                    bitmaps of several environmental conditions(current sea-ice presence, temperature, windspeed, etc.)
+                    , and outputs predictions for sea-ice presence.
+                </p>
+            </div>
+            <div class = "col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <img src = "img/nrc.png" class = "img-responsive" width = 500px>
+            </div>
+            <div class = col-lg-3 col-md-3 col-sm-6 col-xs-12>
+                <h4>Machine Vision Support Engineer</h4>
+                <h5>Vista Solutions Inc. <i> - Windsor, ON</i></h5>
+                <p>
+                    As a Machine Vision Support Engineer at Vista, I was responsible for developing Machine Learning
+                    solutions for projects where traditional methods of Machine Vision could not perform at the
+                    level required by the client. I worked on several projects during my co-op. I spent most of my time
+                    carrying an Object Detection project to completion.
+                    <br><br>
+
+                    I was also responsible for training Vista Engineers and providing an introduction
+                    to Neural Networks. I delivered a webinar presentation that introduced general structure of
+                    Neural Networks, the mathematics behind model training, and how these concepts can be implemented
+                    into their custom applications.
+
+                    <br><br>
+                    I on-boarded Vista Employees with my work, prior to my departure, and trained the incoming co-op
+                    student. I was requested for continual support related to Vista's Machine Learning projects.
+                </p>
+            </div>
+            <div class = "col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <img src = "img/vista-logo.png" class = "img-responsive" width = 500px>
+            </div>
+        </div>
+    </div>
+
+    <div class = "container">
+        <div class = "row">
+            <h4><a href = "#hidden" data-toggle = "collapse">Machine Learning keeps coming up, what is it?</a></h4>
+            <div id = "hidden" class = "collapse">
+                <h4>Machine Learning is...</h4>
+                <p>
+                    Machine learning is a subfield of Artificial Intelligence that involves the development of
+                    algorithms and data architectures that gives a computer program the power to 'learn' from
+                    data and make intelligent decisions without explicit programming. The training process
+                    involves the input of data to the model. For a specific instance of input, the model's
+                    output is compared to what the output should be. Using vector calculus, the internal parameters
+                    of the model are adjusted so that the model's output approaches the desired result.
+                    This process of training is repeated until the developer is pleased with the performance of their
+                    Machine Learning model.
+
+                    <br><br>
+
+                    The above description is simplified. For more detailed summaries of Machine Learning and Neural
+                    Networks, here are a few informative links:
+
+                    <a href = "http://neuralnetworksanddeeplearning.com/chap1.html"
+                       target = "_blank">Neural Networks</a>,
+                    <a href = "https://towardsdatascience.com/machine-learning-for-beginners-an-introduction-to-neural-networks-d49f22d238f9"
+                       target = "_blank">Machine Learning for Beginners</a>,
+                    <a href = "https://www.youtube.com/watch?v=aircAruvnKk" target = "_blank">3blue1brown Video Tutorial</a>.
+
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class = "container text-center" id = "projects">
+        <h2>Projects</h2>
+        <hr>
+    </div>
+
+    <div class="well well-lg">
+        <div class = "container-fluid padding"> <!--- Cards --->
         <div class = "row padding">
             <div class = "col-md-4">
                 <div class = "card">
-                    <img class = "card-img-top" src = "img/team1.png">
+                    <img class = "card-img-top" src = "img/cartpole.jpg" width = 500px height = 350px>
                     <div class = "card-body">
-                        <h4 class = "card-title">John Doe</h4>
+                        <h4 class = "card-title">Reinforcement Learning with Cart-pole (In Progress)</h4>
                         <p class = "card-text">
-                            John is an internet entreonfjnnfnsrninbnsfi
+                            The task at hand is given a 4D vector [Cart Position, Cart Velocity, Pole Angle,
+                            Pole Angle Velocity at tip], determine the best course of action (move left or right). I am
+                            using a Reinforcement Learning approach to solve this problem.
+                            <br><br>
+                            Below you can access my Github Repo and the documentation for OpenAI Gym:
                         </p>
-                        <a href = "#" class = "btn btn-default">See Profile</a>
+                        <br>
+                        <a href = "https://github.com/MichaelNasello?tab=repositories" target = "_blank" class = "btn btn-default">Github Repo</a>
+                        <a href = "https://gym.openai.com/" class = "btn btn-default" target = "_blank">OpenAI Gym</a>
                     </div>
                 </div>
             </div>
             <div class = "col-md-4">
                 <div class = "card">
-                    <img class = "card-img-top" src = "img/team2.png">
+                    <img class = "card-img-top" src = "img/oldwebsite.png" width = 500px height= 350px>
                     <div class = "card-body">
-                        <h4 class = "card-title">John Doe</h4>
+                        <h4 class = "card-title">Personal Website v1</h4>
                         <p class = "card-text">
-                            John is an internet entreonfjnnfnsrninbnsfi
+                            I developed a webpage written in virtually only HTML and CSS. No framework was
+                            used to help with the design of the page.
+                            <br>
+                            <br>
+                            The website is still available via the link below:
                         </p>
-                        <a href = "#" class = "btn btn-default">See Profile</a>
+                        <br>
+                        <a href = "https://www.michaelnasello.ca" target = "_blank" class = "btn btn-default">Website v1</a>
                     </div>
                 </div>
             </div>
             <div class = "col-md-4">
                 <div class = "card">
-                    <img class = "card-img-top" src = "img/team3.png">
+                    <img class = "card-img-top" src = "img/cornerstone-project.png" width = 500px height = 350px>
                     <div class = "card-body">
-                        <h4 class = "card-title">John Doe</h4>
+                        <h4 class = "card-title">Mechatronics Cornerstone Project</h4>
                         <p class = "card-text">
-                            John is an internet entreonfjnnfnsrninbnsfi
+                            This was a first-year, first-term design project for all Mechatronics
+                            Engineering students at the University of Waterloo. It was an open-ended
+                            project. We were given a lego set and an EV3 controller. Monitoring/defending
+                            personal space was the task we choose. The final product surveyed an area and
+                            fired projectiles at approaching objects.
+                            Chassis composed of lego; source code written in RobotC.
+                            During the closing phase of the project, we produced a final report that
+                            summarized project scope, constraints and criteria, mechanical and software
+                            design and methods of testing.
                         </p>
-                        <a href = "#" class = "btn btn-default">See Profile</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class = "container">
-        <div class = "row">
-            <div class = "col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <h4>Built with Sass</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries, but also the leap into
-                    electronic typesetting, remaining essentially unchanged. It was popularised in
-                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                    and more recently with desktop publishing software like Aldus PageMaker including
-                    versions of Lorem Ipsum.
-                </p>
-            </div>
-            <div class = "col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <img src = "img/sass.png" class = "img-responsive">
-            </div>
-            <div class = col-lg-3 col-md-3 col-sm-6 col-xs-12>
-                <h4>And Less.</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries, but also the leap into
-                    electronic typesetting, remaining essentially unchanged. It was popularised in
-                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                    and more recently with desktop publishing software like Aldus PageMaker including
-                    versions of Lorem Ipsum.
-                </p>
-            </div>
-            <div class = "col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <img src = "img/less.png" class = "img-responsive">
-            </div>
-        </div>
     </div>
 
-    <div class = "container">
-        <div class = "row">
-            <h4><a href = "#hidden" data-toggle = "collapse">Care to learn more about Bootstrap? </a></h4>
-            <div id = "hidden" class = "collapse">
-                <h4>Here's the cool thing about Bootstrap...</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries, but also the leap into
-                    electronic typesetting, remaining essentially unchanged. It was popularised in
-                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                    and more recently with desktop publishing software like Aldus PageMaker including
-                    versions of Lorem Ipsum.
-                </p>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                    when an unknown printer took a galley of type and scrambled it to make a type
-                    specimen book. It has survived not only five centuries, but also the leap into
-                    electronic typesetting, remaining essentially unchanged. It was popularised in
-                    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-                    and more recently with desktop publishing software like Aldus PageMaker including
-                    versions of Lorem Ipsum.</p>
-            </div>
-        </div>
-    </div>
+    <br>
 
-    <footer class = "container-fluid text-center">
+    <footer class = "container-fluid text-center" id = "contact" style = "background-color: #222222">
         <div class = "row">
             <div class = "col-sm-4">
-                <h3>Contact Us</h3>
+                <h3>Contact Me</h3>
                 <br>
-                <h4>Our address and contact info here.</h4>
+                <h5>If you have any questions about Machine Learning, Web Development, or the Engineering
+                    Program at the University of Waterloo, don't hesitate to reach out to me.</h5>
             </div>
             <div class = "col-sm-4">
                 <h3>Connect</h3>
-                <a href = "#" class = "fa fa-facebook"></a>
-                <a href = "#" class = "fa fa-twitter"></a>
-                <a href = "#" class = "fa fa-google"></a>
-                <a href = "#" class = "fa fa-linkedin"></a>
-                <a href = "#" class = "fa fa-youtube"></a>
+                <a href = "https://www.linkedin.com/in/michael-nasello/" target = "_blank" class = "fa fa-linkedin"></a>
+                <a href = "https://github.com/MichaelNasello" target = "_blank" class = "fa fa-github"></a>
+                <a href = "mailto:mlnasell@edu.uwaterloo.ca" class = "fa fa-at"></a>
+                <a href = "https://drive.google.com/open?id=1oScBNeyEuKXIX5FqIq0hdXf17sW3vygC" target = "_blank" class = "fa fa-file"></a>
             </div>
             <div class = "col-sm-4">
-                <img src = "img/bunny.png" class = "icon">
+                <img src = "img/logo.png" class = "icon" height = 100px>
             </div>
         </div>
     </footer>
