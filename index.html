@@ -64,24 +64,50 @@
     }
 
     @media (max-width: 900px) {
+        h2 {
+            font-size: 20px
+        }
+    }
+
+    @media (max-width: 750px) {
         .fa {
             font-size: 20px;
             padding: 10px
         }
-    }
-    @media (max_width: 600px) {
-        .carousel-caption {
-            display: none
+        h1 {
+            font-size: 20px
         }
-        #icon {
-            max-width: 150px
+        h5 {
+            font-size: 10px
+        }
+        .btn{
+            display: None
         }
         h2 {
-            font-size: 1.7em
+            font-size: 10px
+        }
+        p.test {
+            font-size: 15px
+        }
+        i.credit {
+            font-size: 8px
         }
     }
 
+    @media (max_width: 600px) {
+        .carousel-caption {
+            h1 {
+                font-size: 10px
+            }
+            h5 {
+                font-size: 5px
+            }
+        }
+        #icon {
+            max-width: 150px
+    }
     </style>
+
 </head>
 <body>
     <nav class = "navbar navbar-inverse">
@@ -120,7 +146,7 @@
                     <h5>Mechatronics Engineering Student</h5>
                     <br>
                     <a href = "https://drive.google.com/open?id=1oScBNeyEuKXIX5FqIq0hdXf17sW3vygC"
-                       target = "_blank"><button class = "btn btn-primary btn-lg">Resume</button></a>
+                       target = "_blank"><button class = "btn btn-primary btn-lg btn-sm">Resume</button></a>
                 </div>
             </div> <!--- End Active --->
             <div class = "item">
@@ -144,9 +170,9 @@
     <div class = "container-fluid"> <!--- Start Jumbotron --->
         <div class = "row jumbotron">
             <div class = "col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
-                <p class = "lead" style = "text-align: center">
-                    Like my website? I used the Bootstrap framework to develop the responsive design. <br> Check out
-                    the source code in the Github repo...
+                <p class = "test" style = "text-align: center">
+                    Like my website? I used Bootstrap to develop the responsive design. <br> Check out
+                    the source code in my Github repo...
                 </p>
             </div>
             <div class = "col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
@@ -176,25 +202,20 @@
                 <h4>About myself...</h4>
                 <p style = "font-size: 18px">
                     I am an individual with a passion for learning. To me, nothing
-                    is more exciting than struggling through a problem, previously
-                    unencountered, and finding that breakthrough and eventual
+                    is more exciting than struggling through a problem and finding that breakthrough
                     solution. While studying Mechatronics Engineering at the
                     University of Waterloo, I have been presented with countless
                     opportunities to do so. Collaborations with classmates has led
-                    to my introduction to several awesome fields, including Web
+                    to my introduction to several interesting areas, including Web
                     Development, Computer Vision, Machine Learning, etc. Outside
                     of the classroom, I use my time to develop skills in these areas.
-                    Deep Learning is a field in which I have spent a significant amount
-                    of time. From watching video lectures, reading articles and
-                    self-teaching myself the mathematics involved in model training,
-                    I have learned how to create deep learning solutions. For my first
-                    co-op position, this was my responsibility; I trained 20+ models
-                    (including iterations), carried one solution to completion and the
-                    other to the demo-stage. I presented both solutions to the
-                    respective customer.
+                    Machine Learning is a field in which I have spent a significant amount
+                    of time. From watching video lectures, reading articles, and
+                    learning the mathematics behind model training,
+                    I have become competent in the area and an active practitioner.
                 </p>
                 <p style = "font-size: 18px">
-                    When I'm not in class nor working on a side project, I enjoy hitting
+                    When I'm not in class nor working on a side project, I enjoy going to
                     the gym, going on runs, and playing several sports recreationally
                     (golf, tennis, soccer).
                 </p>
@@ -213,9 +234,9 @@
             <div class = "item active">
                 <img src = "img/space-x-2.jpg" width = 100%>
                 <div class = "carousel-caption">
-                    <h2>"The people who are crazy enough to think that they can change the world, are the ones who do."</h2>
+                    <h2 class = "quote" >"The people who are crazy enough to think that they can change the world, are the ones who do."</h2>
                     <br>
-                    <h5><i>- Steve Jobs</i></h5>
+                    <h5><i class = "credit">- Steve Jobs</i></h5>
                 </div>
             </div>
         </div>
@@ -232,26 +253,28 @@
 
     <div class = "container">
         <div class = "row">
-            <div class = "col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class = "col-lg-3 col-xs-12">
                 <h4>Machine Learning Developer / Data Scientist (Current Position)</h4>
-                <h5>National Research Council Canada <i> - Ottawa, ON</i></h5>
+                <p>National Research Council Canada <i> - Ottawa, ON</i></p>
                 <p>
                     I am currently working on a project that attempts to forecast sea-ice presence in several
-                    large Canadian bodies of water, including Baffin Bay, the Great Lakes, the Northwest Territories,
-                    and the Arctic. I am developing scripts for testing the peformance of a custom architecture that
-                    incorporates ConvLSTM's as an encoder and a custom RNN for a decoder.
+                    large Canadian bodies of water, including Baffin Bay, Hudson Bay, the Great Lakes, the Northwest Territories,
+                    and the Arctic. The model incorporates ConvLSTM's and the SIF-Net RNN architecture. It takes as input
+                    bitmaps of several environmental conditions (current sea-ice presence, temperature, windspeed, etc.),
+                    and outputs predictions for sea-ice presence.
+
                     <br><br>
-                    The model takes as input
-                    bitmaps of several environmental conditions(current sea-ice presence, temperature, windspeed, etc.)
-                    , and outputs predictions for sea-ice presence.
+                    I am currently developing the production aspect of the project. This involves adding to the current
+                    data pipeline and API so that an end-user can simply provide input and receive a forecast of given length.
+
                 </p>
             </div>
-            <div class = "col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <img src = "img/nrc.png" class = "img-responsive" width = 500px>
+            <div class = "col-lg-3 col-xs-12">
+                <img src = "img/nrc.png" class = "img-responsive" style = "margin-left: auto; margin-right: auto">
             </div>
-            <div class = col-lg-3 col-md-3 col-sm-6 col-xs-12>
+            <div class = col-lg-3 col-xs-12>
                 <h4>Machine Vision Support Engineer</h4>
-                <h5>Vista Solutions Inc. <i> - Windsor, ON</i></h5>
+                <p>Vista Solutions Inc. <i> - Windsor, ON</i></p>
                 <p>
                     As a Machine Vision Support Engineer at Vista, I was responsible for developing Machine Learning
                     solutions for projects where traditional methods of Machine Vision could not perform at the
@@ -269,8 +292,8 @@
                     student. I was requested for continual support related to Vista's Machine Learning projects.
                 </p>
             </div>
-            <div class = "col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <img src = "img/vista-logo.png" class = "img-responsive" width = 500px>
+            <div class = "col-lg-3 col-xs-12">
+                <img src = "img/vista-logo.png" class = "img-responsive" style = "margin-left: auto; margin-right: auto">
             </div>
         </div>
     </div>
@@ -317,7 +340,7 @@
         <div class = "row padding">
             <div class = "col-md-4">
                 <div class = "card">
-                    <img class = "card-img-top" src = "img/cartpole.jpg" width = 500px height = 350px>
+                    <img class = "card-img-top img-responsive" src = "img/cartpole.jpg" style = "margin-left: auto; margin-right: auto">
                     <div class = "card-body">
                         <h4 class = "card-title">Reinforcement Learning with Cart-pole (In Progress)</h4>
                         <p class = "card-text">
@@ -335,7 +358,7 @@
             </div>
             <div class = "col-md-4">
                 <div class = "card">
-                    <img class = "card-img-top" src = "img/oldwebsite.png" width = 500px height= 350px>
+                    <img class = "card-img-top img-responsive" src = "img/oldwebsite.png" style = "margin-left: auto; margin-right: auto">
                     <div class = "card-body">
                         <h4 class = "card-title">Personal Website v1</h4>
                         <p class = "card-text">
@@ -346,13 +369,13 @@
                             The website is still available via the link below:
                         </p>
                         <br>
-                        <a href = "https://www.michaelnasello.ca" target = "_blank" class = "btn btn-default">Website v1</a>
+                        <a href = "http://michaelnasello-old-website.ca.s3-website.ca-central-1.amazonaws.com" target = "_blank" class = "btn btn-default">Website v1</a>
                     </div>
                 </div>
             </div>
             <div class = "col-md-4">
                 <div class = "card">
-                    <img class = "card-img-top" src = "img/cornerstone-project.png" width = 500px height = 350px>
+                    <img class = "card-img-top img-responsive" src = "img/cornerstone-project.png" style = "margin-left: auto; margin-right: auto">
                     <div class = "card-body">
                         <h4 class = "card-title">Mechatronics Cornerstone Project</h4>
                         <p class = "card-text">
