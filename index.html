@@ -426,7 +426,7 @@
         <hr>
         <div class="panel panel-default">
         <div class="panel-heading"><h1 class="panel-title">Reinforcement Learning with CartPole</h1></div>
-            <div class="panel-body" style = "text-align: left">
+            <div class="panel-body" style = "text-align: left; background-color: #616D7E; color: #fff">
                 <p style="text-align:left">
 
 
@@ -529,8 +529,17 @@
                         The final design, model_v5, consisted of the following:
                     </p>
                     <i>
-                        Dense(32) -> Dropout -> Dense(32) -> Dropout -> Dense(32) -> Dropout -> Dense(32) -> Dropout ->
-                        Dense(32) -> Dense(2) -> Softmax
+                        Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
+                        Dropout <span class = "glyphicon glyphicon-arrow-right"></span>
+                        Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
+                        Dropout <span class = "glyphicon glyphicon-arrow-right"></span>
+                        Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
+                        Dropout <span class = "glyphicon glyphicon-arrow-right"></span>
+                        Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
+                        Dropout <span class = "glyphicon glyphicon-arrow-right"></span>
+                        Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
+                        Dense(2) <span class = "glyphicon glyphicon-arrow-right"></span>
+                        Softmax
                     </i>
 
                     <h3>Results</h3>
@@ -552,24 +561,24 @@
                         Three resources were used to help me as I learned about Reinforcement Learning:
                     </p>
                     <ol>
-                        <li>I was introduced to the idea while completing Jose Portilla's 'Complete Guide to TensorFlow
-                            for Deep Learning with Python' course on Udemy:
-                            <a href = "https://www.udemy.com/course/complete-guide-to-tensorflow-for-deep-learning-with-python/">
-                                https://www.udemy.com
+                        <li>I was introduced to the idea while completing Jose Portilla's
+                            <a href = "https://www.udemy.com/course/complete-guide-to-tensorflow-for-deep-learning-with-python/" style = "color: #222222">
+                                Complete Guide to TensorFlow for Deep Learning with Python
+                            </a> course on Udemy.
+                        </li>
+                        <li>
+                            Much of the implementation for this project was inspired by this
+                            <a href="https://medium.com/@hamza.emra/reinforcement-learning-with-tensorflow-2-0-cca33fead626" style = "color: #222222">
+                                Medium post.
                             </a>
                         </li>
                         <li>
-                            Much of the implementation for this project was inspired by the following Medium post:
-                            <a href="https://medium.com/@hamza.emra/reinforcement-learning-with-tensorflow-2-0-cca33fead626">
-                                https://medium.com
+                            This
+                            <a href="https://medium.com/deep-math-machine-learning-ai/ch-13-deep-reinforcement-learning-deep-q-learning-and-policy-gradients-towards-agi-a2a0b611617e" style = "color: #222222">
+                                Medium post
                             </a>
-                        </li>
-                        <li>
-                            This Medium post provided much of the necessary background and understanding for this
-                            project:
-                            <a href="https://medium.com/deep-math-machine-learning-ai/ch-13-deep-reinforcement-learning-deep-q-learning-and-policy-gradients-towards-agi-a2a0b611617e">
-                                https://medium.com
-                            </a>
+                            provided much of the necessary background and understanding for this
+                            project.
                         </li>
                     </ol>
                 </p>
