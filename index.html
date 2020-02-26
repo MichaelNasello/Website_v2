@@ -12,6 +12,22 @@
 	<link href="style.css" rel="stylesheet">
     <link rel="icon" href="img/logo.png">
 
+    <style>
+      #paint {
+        margin: auto;
+      }
+      #predicted {
+        text-align: center;
+      }
+      #number {
+        border: 3px solid black;
+        margin: auto;
+        margin-top: 30px;
+        text-align: center;
+        vertical-align: middle;
+      }
+
+    </style>
 
     <style>
     .navbar {
@@ -369,7 +385,6 @@
             </div>
         </div>
     </div>
-
         <div class = "container">
         <div class = "row">
             <h4>
@@ -479,7 +494,7 @@
                             This was a first-year, first-term design project for all Mechatronics
                             Engineering students at the University of Waterloo. It was an open-ended
                             project. We were given a lego set and an EV3 controller. Monitoring/defending
-                            personal space was the task we choose. The final product surveyed an area and
+                            personal space was the task we chose. The final product surveyed an area and
                             fired projectiles at approaching objects.
                             Chassis composed of lego; source code written in RobotC.
                             During the closing phase of the project, we produced a final report that
@@ -493,171 +508,335 @@
     </div>
     </div>
 
-    <div class = "container text-center" id = "featuredwork">
+    <div class="container" id = "featuredwork">
         <h1 class = "display-4">Featured Work</h1>
-        <hr>
-        <div class="panel panel-default">
-        <div class="panel-heading"><h1 class="panel-title">Reinforcement Learning with CartPole</h1></div>
-            <div class="panel-body" style = "text-align: left; background-color: #616D7E; color: #fff">
-                <p style="text-align:left">
+        <div class="row">
+            <section class="mx-2 pb-3">
+                <ul class="nav nav-tabs md-tabs" id="myTabMD" role="tablist">
+                    <li class="nav-item waves-effect waves-light active">
+                        <a class="nav-link active" id="home-tab-md" data-toggle="tab" href="#home-md" role="tab" aria-controls="home-md" aria-selected="true">RL with CartPole</a>
+                    </li>
+                    <li class="nav-item waves-effect waves-light">
+                        <a class="nav-link" id="profile-tab-md" data-toggle="tab" href="#profile-md" role="tab" aria-controls="profile-md" aria-selected="false">Digit Recognition</a>
+                    </li>
+                </ul>
+                <div class="tab-content card pt-5" id="myTabContentMD" style = "background-color: #616D7E; color: #fff">
+                    <div class="tab-pane fade in active" id="home-md" role="tabpanel" aria-labelledby="home-tab-md" style = "padding: 5px; padding-left: 10px">
+                        <p>
+                            <h3>Problem</h3>
+
+                            The goal of this project was to develop a policy the CartPole can follow so that it stands upright. At each
+                            time step, OpenAI Gym provides the cart's position, angle, velocity, and angular velocity. It is our
+                            job to use this information to determine what action should be taken that will maximize the
+                            probability that the CartPole remains standing upright. Possible actions are moving left or right.
+
+                            <h3>Approach</h3>
+
+                            <p>
+                                Reinforcement Learning was used to solve this problem. This concept is synonymous to
+                                positive/negative reinforcements in real life:
+                            </p>
+                            <p>
+                                <i>If a dog behaves, they receive a treat; if they misbehave, you put them in their cage.
+                                     After time, the dog figures out what is considered good/bad behaviour
+                                    based off of the consequences.
+                                </i>
+                            </p>
+
+                            <p>
+                                This approach can be used to our advantage when training AI. The reinforcement learning application
+                                consists of four entities:
+                            </p>
+                            <ol>
+                                <li>The environment (OpenAI Gym / Your house)</li>
+                                <li>The agent (CartPole / The dog)</li>
+                                <li>The action space (Move left or right / Behave or misbehave)</li>
+                                <li>The reward (Number / Give treat or put in cage)</li>
+                            </ol>
+
+                            <p>
+                                The approach for solving this problem is the following: train the CartPole to take actions that
+                                maximize its reward.
+                            </p>
+
+                            <h4>How is the network trained?</h4>
+
+                            <p>
+                                For a given state, it is the network's job to output a vector of probabilities for taking each
+                                action in the action space. When training, we attempt to minimize the difference between that output
+                                and the action that maximizes rewards.
+                            </p>
+
+                            <p>
+                                For example, if the CartPole is currently travelling to the left, it is preferable to
+                                reverse that movement and begin travelling to the right. Thus, a desired output from the model is [0, 1]
+                                ([Going left, Going right]). A network without training won't necessarily generate that output.
+                                The optimizer's job is to adjust the network so that the vector approaches [0, 1] when the CartPole
+                                is moving left.
+                            </p>
+
+                            <img class = "card-img-top img-responsive" src = "img/RLModel.png" style = "margin-left: auto; margin-right: auto">
 
 
-                    <h3>Problem</h3>
+                            <h4>So our loss function attempts to minimize that difference. How are rewards used?</h4>
 
-                    The goal of this project was to develop a policy the CartPole can follow so that it stands upright. At each
-                    time step, OpenAI Gym provides the cart's position, angle, velocity, and angular velocity. It is our
-                    job to use this information to determine what action should be taken that will maximize the
-                    probability that the CartPole remains standing upright. Possible actions are moving left or right.
+                            <p>
+                                We multiply our gradients by the rewards. When performing Back Propagation, positive rewards
+                                (agent did something right) will cause the optimizer to descend down the gradient. The
+                                opposite is true for negative rewards (agent did something wrong). This process has the effect of
+                                'learning' what the appropriate actions to take are, given a state from the environment.
+                            </p>
+                            <h4>The Credit Assignment Problem</h4>
 
-                    <h3>Approach</h3>
+                            <p>
+                                There is a fundamental problem with how rewards are calculated: how does the agent know if
+                                falling at t = 100 was caused by an action at t = 98 or t = 17? This is known as the 'Credit
+                                Assignment Problem'.
+                            </p>
+                            <p>
+                                To solve this problem, we apply a discount rate to our rewards. For each time step:
+                            </p>
+                            <p>
+                                <i>
+                                    Discounted Reward [t = t] = Reward [t = t] * pow(discount_rate, 0) + ... + Reward [t = t + n]
+                                    * pow(discount_rate, n)
+                                </i>
+                            </p>
+                            <p>
+                                Note: discount_rate belongs to (0, 1)
+                            </p>
+                            <p>
+                                What does this accomplish? This decreases the impact that a future reward has on the current time
+                                step. Using discounted rewards, the agent, over many games, is able to 'learn' what actions,
+                                given a corresponding input from the environment, are beneficial.
+                            </p>
 
-                    <p>
-                        Reinforcement Learning was used to solve this problem. This concept is synonymous to
-                        positive/negative reinforcements in real life:
-                    </p>
-                    <p>
-                        <i>If a dog behaves, they receive a treat; if they misbehave, you put them in their cage.
-                             After time, the dog figures out what is considered good/bad behaviour
-                            based off of the consequences.
-                        </i>
-                    </p>
+                            <h3>Model</h3>
 
-                    <p>
-                        This approach can be used to our advantage when training AI. The reinforcement learning application
-                        consists of four entities:
-                    </p>
-                    <ol>
-                        <li>The environment (OpenAI Gym / Your house)</li>
-                        <li>The agent (CartPole / The dog)</li>
-                        <li>The action space (Move left or right / Behave or misbehave)</li>
-                        <li>The reward (Number / Give treat or put in cage)</li>
-                    </ol>
+                            <p>
+                                The tf.keras API was leveraged for the formulation of models. Each model architecture developed
+                                consisted of a series of fully-connected layers. Dropout was used for the final design; this
+                                design performed the best during testing.
+                            </p>
+                            <p>
+                                The final design, model_v5, consisted of the following:
+                            </p>
+                            <i>
+                                Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
+                                Dropout <span class = "glyphicon glyphicon-arrow-right"></span>
+                                Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
+                                Dropout <span class = "glyphicon glyphicon-arrow-right"></span>
+                                Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
+                                Dropout <span class = "glyphicon glyphicon-arrow-right"></span>
+                                Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
+                                Dropout <span class = "glyphicon glyphicon-arrow-right"></span>
+                                Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
+                                Dense(2) <span class = "glyphicon glyphicon-arrow-right"></span>
+                                Softmax
+                            </i>
 
-                    <p>
-                        The approach for solving this problem is the following: train the CartPole to take actions that
-                        maximize its reward.
-                    </p>
+                            <h3>Results</h3>
 
-                    <h4>How is the network trained?</h4>
+                            <p>
+                                After 5 iterations of the model architecture, a policy model was trained that converged and
+                                was able to survive in the environment. The program was manually
+                                stopped at 15,000 steps (about 5 minutes). It took 900 episodes of training to reach this point.
+                                Below is a video showing the agent's progress throughout the training loop.
+                            </p>
 
-                    <p>
-                        For a given state, it is the network's job to output a vector of probabilities for taking each
-                        action in the action space. When training, we attempt to minimize the difference between that output
-                        and the action that maximizes rewards.
-                    </p>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="vid/Training of Policy Model.mp4"></iframe>
+                            </div>
 
-                    <p>
-                        For example, if the CartPole is currently travelling to the left, it is preferable to
-                        reverse that movement and begin travelling to the right. Thus, a desired output from the model is [0, 1]
-                        ([Going left, Going right]). A network without training won't necessarily generate that output.
-                        The optimizer's job is to adjust the network so that the vector approaches [0, 1] when the CartPole
-                        is moving left.
-                    </p>
+                        <h3>Acknowledgements</h3>
 
-                    <img class = "card-img-top img-responsive" src = "img/RLModel.png" style = "margin-left: auto; margin-right: auto">
-
-
-                    <h4>So our loss function attempts to minimize that difference. How are rewards used?</h4>
-
-                    <p>
-                        We multiply our gradients by the rewards. When performing Back Propagation, positive rewards
-                        (agent did something right) will cause the optimizer to descend down the gradient. The
-                        opposite is true for negative rewards (agent did something wrong). This process has the effect of
-                        'learning' what the appropriate actions to take are, given a state from the environment.
-                    </p>
-                    <h4>The Credit Assignment Problem</h4>
-
-                    <p>
-                        There is a fundamental problem with how rewards are calculated: how does the agent know if
-                        falling at t = 100 was caused by an action at t = 98 or t = 17? This is known as the 'Credit
-                        Assignment Problem'.
-                    </p>
-                    <p>
-                        To solve this problem, we apply a discount rate to our rewards. For each time step:
-                    </p>
-                    <p>
-                        <i>
-                            Discounted Reward [t = t] = Reward [t = t] * pow(discount_rate, 0) + ... + Reward [t = t + n]
-                            * pow(discount_rate, n)
-                        </i>
-                    </p>
-                    <p>
-                        Note: discount_rate belongs to (0, 1)
-                    </p>
-                    <p>
-                        What does this accomplish? This decreases the impact that a future reward has on the current time
-                        step. Using discounted rewards, the agent, over many games, is able to 'learn' what actions,
-                        given a corresponding input from the environment, are beneficial.
-                    </p>
-
-                    <h3>Model</h3>
-
-                    <p>
-                        The tf.keras API was leveraged for the formulation of models. Each model architecture developed
-                        consisted of a series of fully-connected layers. Dropout was used for the final design; this
-                        design performed the best during testing.
-                    </p>
-                    <p>
-                        The final design, model_v5, consisted of the following:
-                    </p>
-                    <i>
-                        Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
-                        Dropout <span class = "glyphicon glyphicon-arrow-right"></span>
-                        Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
-                        Dropout <span class = "glyphicon glyphicon-arrow-right"></span>
-                        Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
-                        Dropout <span class = "glyphicon glyphicon-arrow-right"></span>
-                        Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
-                        Dropout <span class = "glyphicon glyphicon-arrow-right"></span>
-                        Dense(32) <span class = "glyphicon glyphicon-arrow-right"></span>
-                        Dense(2) <span class = "glyphicon glyphicon-arrow-right"></span>
-                        Softmax
-                    </i>
-
-                    <h3>Results</h3>
-
-                    <p>
-                        After 5 iterations of the model architecture, a policy model was trained that converged and
-                        was able to survive in the environment. The program was manually
-                        stopped at 15,000 steps (about 5 minutes). It took 900 episodes of training to reach this point.
-                        Below is a video showing the agent's progress throughout the training loop.
-                    </p>
-
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="vid/Training of Policy Model.mp4"></iframe>
+                            <p>
+                                Three resources were used to help me as I learned about Reinforcement Learning:
+                            </p>
+                            <ol>
+                                <li>I was introduced to the idea while completing Jose Portilla's
+                                    <a href = "https://www.udemy.com/course/complete-guide-to-tensorflow-for-deep-learning-with-python/"
+                                       style = "color: black" target = "_blank">
+                                        Complete Guide to TensorFlow for Deep Learning with Python
+                                    </a> course on Udemy.
+                                </li>
+                                <li>
+                                    Much of the implementation for this project was inspired by this
+                                    <a href="https://medium.com/@hamza.emra/reinforcement-learning-with-tensorflow-2-0-cca33fead626"
+                                       style = "color: black" target = "_blank">
+                                        Medium post.
+                                    </a>
+                                </li>
+                                <li>
+                                    This
+                                    <a href="https://medium.com/deep-math-machine-learning-ai/ch-13-deep-reinforcement-learning-deep-q-learning-and-policy-gradients-towards-agi-a2a0b611617e"
+                                       style = "color: black" targer = "_blank">
+                                        Medium post
+                                    </a>
+                                    provided much of the necessary background and understanding for this
+                                    project.
+                                </li>
+                            </ol>
+                        </p>
                     </div>
+                    <div class="tab-pane fade" id="profile-md" role="tabpanel" aria-labelledby="profile-tab-md" style = "padding: 5px; padding-left: 10px">
+                        <p>
+                            <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.5.2/dist/tf.min.js"></script>
 
-                <h3>Acknowledgements</h3>
+                            <h3>Problem</h3>
 
-                    <p>
-                        Three resources were used to help me as I learned about Reinforcement Learning:
-                    </p>
-                    <ol>
-                        <li>I was introduced to the idea while completing Jose Portilla's
-                            <a href = "https://www.udemy.com/course/complete-guide-to-tensorflow-for-deep-learning-with-python/"
-                               style = "color: black" target = "_blank">
-                                Complete Guide to TensorFlow for Deep Learning with Python
-                            </a> course on Udemy.
-                        </li>
-                        <li>
-                            Much of the implementation for this project was inspired by this
-                            <a href="https://medium.com/@hamza.emra/reinforcement-learning-with-tensorflow-2-0-cca33fead626"
-                               style = "color: black" target = "_blank">
-                                Medium post.
-                            </a>
-                        </li>
-                        <li>
-                            This
-                            <a href="https://medium.com/deep-math-machine-learning-ai/ch-13-deep-reinforcement-learning-deep-q-learning-and-policy-gradients-towards-agi-a2a0b611617e"
-                               style = "color: black" targer = "_blank">
-                                Medium post
-                            </a>
-                            provided much of the necessary background and understanding for this
-                            project.
-                        </li>
-                    </ol>
-                </p>
+                            The goal is to correctly classify a single handwritten digit given an arbitrary image.
+                            To test out the performance of my model, you can draw a number in the canvas below. To make
+                            a prediction, an image of your drawing will be saved and pushed through the model. When your
+                            done, hit <b>Clear</b> to retry.
 
+                            <br>
+                            <br>
+                            <div id="paint">
+                                <canvas id="myCanvas" style = "border:1px solid #000000; background-color: white"></canvas>
+                            </div>
+
+                            <div id="predicted">
+                                <div id="number"></div>
+                                <br>
+                                <button class = "btn btn-default" id = "clear">Clear</button>
+                            </div>
+
+                            <h3>Approach</h3>
+
+                            <div class = "row" style = "padding: 5px; padding-left: 10px">
+                                <div class = "col-md-6">
+                                    <p>
+                                        Machine Learning was used to solve this problem. Using the tf.keras API, a Convolutional
+                                        Neural Network was trained on the MNIST dataset. The following model architecture was
+                                        used.
+
+                                        <br>
+                                        <br>
+
+                                        Thanks to Google, I was able to train on a state-of-the-art TPU (Tensor Processing Unit)
+                                        through their free cloud service: Google Colab. On the MNIST dataset, I reached a
+                                        validation accuracy of approximately 99.4%.
+                                    </p>
+                                </div>
+                                <div class = "col-md-6">
+                                    <img src = "img/model.png" class = "card-img-top img-responsive" style = "margin-left: auto; margin-right: auto">
+                                </div>
+                            </div>
+
+
+                            <script>
+                                var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                                if (isMobile) {
+                                  $('#paint').css({'width': '60%'});
+                                  $('#number').css({'width': '30%', 'font-size': '240px'});
+                                  $('#clear').css({'font-size': '25px'});
+                                } else {
+                                  $('#paint').css({'width': '300px'});
+                                  $('#number').css({'width': '150px', 'font-size': '95px'});
+                                  $('#clear').css({'font-size': '25px'});
+                                }
+
+                                var cw = $('#paint').width();
+                                $('#paint').css({'height': cw + 'px'});
+
+                                cw = $('#number').width();
+                                $('#number').css({'height': cw + 'px'});
+
+                                // From https://www.html5canvastutorials.com/labs/html5-canvas-paint-application/
+                                var canvas = document.getElementById('myCanvas');
+                                var context = canvas.getContext('2d');
+
+                                var compuetedStyle = getComputedStyle(document.getElementById('paint'));
+                                canvas.width = parseInt(compuetedStyle.getPropertyValue('width'));
+                                canvas.height = parseInt(compuetedStyle.getPropertyValue('height'));
+
+                                var mouse = {x: 0, y: 0};
+
+                                canvas.addEventListener('mousemove', function(e) {
+                                  mouse.x = e.pageX - this.offsetLeft;
+                                  mouse.y = e.pageY - this.offsetTop;
+                                }, false);
+
+                                context.lineWidth = isMobile ? 60 : 25;
+                                context.lineJoin = 'round';
+                                context.lineCap = 'round';
+                                context.strokeStyle = '#0000FF';
+
+                                canvas.addEventListener('mousedown', function(e) {
+                                  context.moveTo(mouse.x, mouse.y);
+                                  context.beginPath();
+                                  canvas.addEventListener('mousemove', onPaint, false);
+                                }, false);
+
+                                canvas.addEventListener('mouseup', function() {
+                                  $('#number').html('<img id="spinner" src="spinner.gif"/>');
+                                  canvas.removeEventListener('mousemove', onPaint, false);
+                                  var img = new Image();
+                                  img.onload = function() {
+                                    context.drawImage(img, 0, 0, 28, 28);
+                                    data = context.getImageData(0, 0, 28, 28).data;
+                                    var input = [];
+                                    for(var i = 0; i < data.length; i += 4) {
+                                      input.push(data[i + 2] / 255);
+                                    }
+                                    predict(input);
+                                  };
+                                  img.src = canvas.toDataURL('image/png');
+                                }, false);
+
+                                var onPaint = function() {
+                                  context.lineTo(mouse.x, mouse.y);
+                                  context.stroke();
+                                };
+
+                                tf.loadLayersModel('model/model.json').then(function(model) {
+                                  window.model = model;
+                                });
+
+                                // http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
+                                // Set up touch events for mobile, etc
+                                canvas.addEventListener('touchstart', function (e) {
+                                  var touch = e.touches[0];
+                                  canvas.dispatchEvent(new MouseEvent('mousedown', {
+                                    clientX: touch.clientX,
+                                    clientY: touch.clientY
+                                  }));
+                                }, false);
+                                canvas.addEventListener('touchend', function (e) {
+                                  canvas.dispatchEvent(new MouseEvent('mouseup', {}));
+                                }, false);
+                                canvas.addEventListener('touchmove', function (e) {
+                                  var touch = e.touches[0];
+                                  canvas.dispatchEvent(new MouseEvent('mousemove', {
+                                    clientX: touch.clientX,
+                                    clientY: touch.clientY
+                                  }));
+                                }, false);
+
+                                var predict = function(input) {
+                                  if (window.model) {
+                                    window.model.predict([tf.tensor(input).reshape([1, 28, 28, 1])]).array().then(function(scores){
+                                      scores = scores[0];
+                                      predicted = scores.indexOf(Math.max(...scores));
+                                      $('#number').html(predicted);
+                                    });
+                                  } else {
+                                    // The model takes a bit to load, if we are too fast, wait
+                                    setTimeout(function(){predict(input)}, 50);
+                                  }
+                                }
+
+                                $('#clear').click(function(){
+                                  context.clearRect(0, 0, canvas.width, canvas.height);
+                                  $('#number').html('');
+                                });
+                            </script>
+                        </p>
+                    </div>
+                </div>
+            </section>
             </div>
         </div>
     </div>
