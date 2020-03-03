@@ -102,12 +102,12 @@
 
     @media (max-width: 900px) {
         h1.name{
-        font-size: 30px;
+        font-size: 37px;
         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
         }
 
         h5.degree{
-            font-size: 10px;
+            font-size: 18px;
             text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
         }
 
@@ -126,15 +126,19 @@
         }
 
         h1 {
-            font-size: 20px
+            font-size: 28px
         }
 
         h5 {
-            font-size: 10px
+            font-size: 12px
         }
 
-        .btn-lg{
-            display: None
+        .btn-sm{
+            font-size: 10px;
+        }
+
+        .gitbut{
+            font-size: 10px
         }
 
         h2 {
@@ -149,33 +153,38 @@
             font-size: 8px
         }
         h1.name{
-            font-size: 20px;
+            font-size: 32px;
             text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
         }
         h5.degree{
-            font-size: 8px;
+            font-size: 15px;
             text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
         }
 
-        .vista{
-            width: 300px
+        .carousel2{
+            display: none
         }
     }
 
     @media (max-width: 600px) {
         h1.name{
-            font-size: 20px;
+            font-size: 28px;
             text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
         }
         h5.degree{
-            font-size: 8px;
-            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black
+            font-size: 13px;
+            text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
         }
         #icon {
             max-width: 150px
         }
-        .vista{
-            width: 200px
+
+        .carousel-caption{
+             padding-bottom: 185px
+        }
+
+        p.test{
+            font-size: 11px
         }
     }
     </style>
@@ -263,7 +272,7 @@
                 </p>
             </div>
             <div class = "col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
-                <a href = "https://github.com/MichaelNasello/Website_v2" target = "_blank"><button class = "btn btn-secondary">Github Repository</button></a>
+                <a href = "https://github.com/MichaelNasello/Website_v2" target = "_blank"><button class = "btn btn-secondary gitbut">Github Repository</button></a>
             </div>
         </div>
     </div>
@@ -313,7 +322,7 @@
         </div>
     </div>
 
-    <div id = "myCarousel" class = "carousel slide" data-ride = "carousel">
+    <div id = "myCarousel" class = "carousel slide carousel2" data-ride = "carousel">
         <ol class = "carousel-indicators">
             <li data-target = "#myCarousel" data-slide-to = "0" class = "active"></li>
         </ol>
@@ -729,8 +738,8 @@
                             <script>
                                 var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
                                 if (isMobile) {
-                                  $('#paint').css({'width': '60%'});
-                                  $('#number').css({'width': '30%', 'font-size': '240px'});
+                                  $('#paint').css({'width': '250px'});
+                                  $('#number').css({'width': '100px', 'height': '70px', 'font-size': '60px'});
                                   $('#clear').css({'font-size': '25px'});
                                 } else {
                                   $('#paint').css({'width': '300px'});
@@ -759,7 +768,14 @@
                                   mouse.y = e.pageY - this.offsetTop;
                                 }, false);
 
-                                context.lineWidth = isMobile ? 60 : 25;
+                                var touch = {x: 0, y: 0};
+
+                                canvas.addEventListener('touchmove', function(e) {
+                                  touch.x = e.pageX - this.offsetLeft;
+                                  touch.y = e.pageY - this.offsetTop;
+                                }, false);
+
+                                context.lineWidth = isMobile ? 13 : 13;
                                 context.lineJoin = 'round';
                                 context.lineCap = 'round';
                                 context.strokeStyle = '#0000FF';
@@ -771,7 +787,6 @@
                                 }, false);
 
                                 canvas.addEventListener('mouseup', function() {
-                                  $('#number').html('<img id="spinner" src="spinner.gif"/>');
                                   canvas.removeEventListener('mousemove', onPaint, false);
                                   var img = new Image();
                                   img.onload = function() {
@@ -786,16 +801,6 @@
                                   img.src = canvas.toDataURL('image/png');
                                 }, false);
 
-                                var onPaint = function() {
-                                  context.lineTo(mouse.x, mouse.y);
-                                  context.stroke();
-                                };
-
-                                tf.loadLayersModel('model/model.json').then(function(model) {
-                                  window.model = model;
-                                });
-
-                                // http://bencentra.com/code/2014/12/05/html5-canvas-touch-events.html
                                 // Set up touch events for mobile, etc
                                 canvas.addEventListener('touchstart', function (e) {
                                   var touch = e.touches[0];
@@ -814,6 +819,38 @@
                                     clientY: touch.clientY
                                   }));
                                 }, false);
+
+                                // Prevent scrolling when touching the canvas
+                                canvas.addEventListener("touchstart", function (e) {
+                                  if (e.target == canvas) {
+                                    e.preventDefault();
+                                  }
+                                }, false);
+                                canvas.addEventListener("touchend", function (e) {
+                                  if (e.target == canvas) {
+                                    e.preventDefault();
+                                  }
+                                }, false);
+                                canvas.addEventListener("touchmove", function (e) {
+                                  if (e.target == canvas) {
+                                    e.preventDefault();
+                                  }
+                                }, false);
+
+                                var onPaint = function() {
+                                    if (isMobile){
+                                        context.lineTo(touch.x, touch.y);
+                                        context.stroke();
+                                    }
+                                    else{
+                                        context.lineTo(mouse.x, mouse.y);
+                                        context.stroke();
+                                    }
+                                };
+
+                                tf.loadLayersModel('model/model.json').then(function(model) {
+                                  window.model = model;
+                                });
 
                                 var predict = function(input) {
                                   if (window.model) {
